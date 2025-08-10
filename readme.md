@@ -19,6 +19,11 @@ Então no geral: esse projeto funciona como uma API normal utilizando HTTP nas r
 Para executar o backend desse projeto (este repositório), execute os seguintes passos:
 
 1. Clone esse repositório em um diretório na sua máquina
+
+```
+git clone https://github.com/marysclair/Backend-Websocket-PWII.git
+```
+
 2. Execute os seguintes comandos no terminal para baixar as dependências e executar a API em modo de desenvolvimento
 
 ```
@@ -46,7 +51,7 @@ Os usuários criados estão no array `userDb` que são:
   {
     id: "b774c88c-b3f5-47d0-850c-50d4792e2f68",
     username: "mauricio",
-    email: "mauecio@gmail.com",
+    email: "maueicio@gmail.com",
     type: "user",
     orders: [],
   },

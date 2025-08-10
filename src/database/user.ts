@@ -19,7 +19,7 @@ export const userDb: User[] = [
   {
     id: "b774c88c-b3f5-47d0-850c-50d4792e2f68",
     username: "mauricio",
-    email: "mauecio@gmail.com",
+    email: "maueicio@gmail.com",
     type: "user",
     orders: [],
   },
