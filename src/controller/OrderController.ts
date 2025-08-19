@@ -61,24 +61,6 @@ export class OrderController {
     try {
       const order = orderService.updateOrderById(user, orderId, address);
 
-      if (order) {
-        // sends notification via webscoket
-        adminClients.forEach((ws) => {
-          if (ws.readyState === WebSocket.OPEN) {
-            ws.send(
-              JSON.stringify({
-                type: "orderUpdated",
-                data: {
-                  orderId: order.id,
-                  address: order.address,
-                  userId: user.id,
-                },
-              })
-            );
-          }
-        });
-      }
-
       return res.status(200).send(order);
     } catch (error) {
       console.error("Error creating order:", error);

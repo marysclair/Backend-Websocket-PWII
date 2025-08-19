@@ -2,6 +2,7 @@ import { userDb } from "../database/user";
 import { Order } from "../model/Order";
 import { User } from "../model/User";
 import { v4 as uuidv4 } from "uuid";
+import { adminClients } from "../server";
 
 export class OrderService {
   findUniqueUserOrder(user: User, id: string) {
@@ -54,6 +55,23 @@ export class OrderService {
     if (!order) return null;
 
     order.address = address;
+
+    // sends notification via webscoket
+    adminClients.forEach((ws) => {
+      if (ws.readyState === WebSocket.OPEN) {
+        ws.send(
+          JSON.stringify({
+            type: "orderUpdated",
+            data: {
+              orderId: order.id,
+              address: order.address,
+              userId: user.id,
+            },
+          })
+        );
+      }
+    });
+
     return order;
   }
 }
